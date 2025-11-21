@@ -1,0 +1,197 @@
+---
+title: "ST2195 Class Assignment 1a (R)"
+date: "2025-07-28"
+output: html_document
+---
+
+## About the Assignment
+
+This is the ***R*** part of ST2195 Class Assignment 1, which covers topics from Blocks 1 & 2 of the ST2195 Programming for Data Science course.
+
+**Instructions:**
+
+1.  For each question, run the starter code first to create the necessary data structures/variables before attempting the subsequent tasks.
+2.  After this, follow the sequence of the tasks, and provide your R code to address each task in the respective code cells.
+3.  In all cases, a single line of code is sufficient to achieve the task. However, you can use multiple lines of code if necessary.
+
+## Question 1 [total 5 marks]
+
+```{r}
+# Suppose you have variables v1, v2, v3 as shown
+# -- run this code first --
+v1 <- "67"
+v2 <- 89
+v3 <- "abc"
+```
+
+```{r}
+# Task 1.1 - Write R code to combine v1, v2, v3 as "8967abc" [2 marks]
+# -- insert your code below --
+answer <- paste0(as.character(v2),v1,v3)
+print(answer)
+```
+
+```{r}
+# Task 1.2 - Write R code to add v1 and v2 values to get 156 (i.e., 67 + 89) [3 marks]
+# -- insert your code below --
+addition <- as.numeric(v1) + v2
+print(addition)
+```
+
+## Question 2 [total 13 marks]
+
+```{r}
+# Suppose we have a vector named 'scores'
+# -- run this code first --
+scores <- c(88, 65, 80, 98, 72, 81, 68, 90)
+
+```
+
+```{r}
+# Task 2.1 - Write R code to extract the median score in the vector [2 marks]
+# -- insert your code below --
+median(scores)
+```
+
+```{r}
+# Task 2.2 - Write R code to compute the range (i.e., difference between the maximum and minimum values) in the vector [2 marks] 
+# -- insert your code below --
+minmax <- range(scores)
+minmax[2]-minmax[1]
+```
+
+```{r}
+# Task 2.3 - Write R code to extract the last element of the vector, without using a fixed index [2 marks]
+# -- insert your code below --
+last_element <- scores[length(scores)]
+print(last_element)
+```
+
+```{r}
+# Task 2.4 - Write R code to extract the 1st and 3rd elements in the vector [2 marks]
+# -- insert your code below --
+scores[c(1,3)]
+```
+
+```{r}
+# Task 2.5 - Write R code that would change the value of the 2nd element in the vector to 100 [2 marks]
+# -- insert your code below --
+scores[2] <- 100
+print(scores)
+```
+
+```{r}
+# Task 2.6 - Write R code to sort the scores in descending order [3 marks]
+# -- insert your code below --
+sort(scores, decreasing = TRUE)
+```
+
+## Question 3 [total 6 marks]
+
+```{r}
+# Suppose we have a vector named 'shirt_sizes' as shown
+# -- run this code first --
+shirt_sizes <- c("medium","small","large","medium","extra-large","medium","large", "small")
+
+```
+
+```{r}
+# Task 3.1 - Write R code to convert the vector into a factor ordered from small to extra-large. Store it as shirt_sizes_factor [3 marks]
+# -- insert your code below --
+shirt_sizes_factor <- factor(
+  shirt_sizes,
+  levels = c("small","medium","large","extra-large"),
+  ordered = TRUE
+)
+print(shirt_sizes_factor)
+```
+
+```{r}
+# Task 3.2 - Write R code to show a summary/table of counts by factor [3 marks]
+# -- insert your code below --
+summary(shirt_sizes_factor)
+```
+
+## Question 4 [total 7 marks]
+
+```{r}
+# Suppose we have two 3x5 matrices (m1 and m2), each comprising 15 randomly generated numbers
+# -- run this code first --
+set.seed(100)
+m1 <- matrix(runif(15),nrow=3)
+m2 <- matrix(runif(15),nrow=3)
+
+```
+
+```{r}
+# Task 4.1 - Write R code to combine m1 and m2 by column. Store it as m3 [2 marks]
+# -- insert your code below --
+m3 <- cbind(m1,m2)
+```
+
+```{r}
+# Task 4.2 - Write R code to combine m1 and m2 by row. Store it as m4 [2 marks]
+# -- insert your code below --
+m4 <- rbind(m1,m2)
+```
+
+```{r}
+# Task 4.3 - Write R code to compute the sum for each of the rows in m4 [3 marks]
+# -- insert your code below --
+rowSums(m4)
+```
+
+## Question 5 [total 19 marks]
+
+```{r}
+# We use the first 10 columns of the starwars dataset from dplyr package, and convert it to a dataframe named df. 
+# -- run this code first --
+install.packages("dplyr")   #run this line if dplyr package is not installed yet
+library(dplyr)
+df <- as.data.frame(dplyr::starwars[1:10])
+
+```
+
+```{r}
+# Task 5.1 - Write R code to determine how many rows and columns there are in the dataframe [2 marks]
+# -- insert your code below --
+nrow(df)
+ncol(df)
+```
+
+```{r}
+# Task 5.2 - Write R code to display the first 15 rows of the dataframe [2 marks]
+# -- insert your code below --
+head(df,n=15)
+```
+
+```{r}
+# Task 5.3 - Write R code to display the structure of the dataframe, including total number of observations and variables, names and data types of variables, and a glimpse of the first few observations [2 marks]
+# -- insert your code below --
+str(df)
+```
+
+```{r}
+# Task 5.4 - Write R code to select the first column ('name') in the dataframe [2 marks]
+# -- insert your code below --
+df[,1]
+```
+
+```{r}
+# Task 5.5 - Write R code to select the first 10 rows and first 2 columns ("name", "height") of the dataframe [3 marks]
+# -- insert your code below --
+df[1:10,c("name","height")]
+```
+
+```{r}
+# Task 5.6 - Write R code to extract the rows where "height" is above 180 and mass is above 100 [4 marks]
+# -- insert your code below --
+df[df$height>180 & df$mass>100,]
+```
+
+```{r}
+# Task 5.7 - Write R code to extract the rows where "homeworld" is either "Naboo" or "Tatooine", and "eye_color" is "brown" [4 marks]
+# -- insert your code below --
+df[df$homeworld %in% c("Naboo", "Tatooine") & df$eye_color == "brown", ]
+
+```
